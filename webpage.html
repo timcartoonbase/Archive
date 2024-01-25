@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="style.css" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="container" id="container01">
+			<div class="content" id="inputs">
+				<input
+					type="range"
+					name="level"
+					id="level"
+					min="0"
+					max="100"
+					value="0"
+					oninput="setTrigger(this.value)"
+				/>
+			</div>
+			<div id="canvasDiv">
+				<canvas id="canvas" width="500" height="500"></canvas>
+			</div>
+		</div>
+
+		<!-- RIVE  -->
+		<script src="https://unpkg.com/@rive-app/canvas@2.9.1"></script>
+		<script>
+			const level = document.getElementById("level");
+			const number = document.getElementById("num");
+
+			const realDisplayNum = () => {
+				document.getElementById("rangeValue").innerText;
+			};
+
+			let trigger;
+			const r = new rive.Rive({
+				src: "test.riv",
+				canvas: document.getElementById("canvas"),
+				autoplay: true,
+				stateMachines: "State Machine 1",
+				// fit: rive.fit.cover,
+				onLoad: () => {
+					const inputs = r.stateMachineInputs("State Machine 1"); // get state machine
+					console.log(inputs);
+					trigger = inputs.find((i) => i.name === "Level"); // input in rive
+					trigger.value = 0;
+				},
+
+				// r.resizeDrawingSurfaceToCanvas();
+			});
+
+			const setTrigger = (n) => {
+				console.log(
+					(trigger.value = n) //document.getElementById("rangeValue").innerText)
+				);
+			};
+		</script>
+	</body>
+</html>

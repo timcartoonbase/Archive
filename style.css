@@ -1,0 +1,30 @@
+body {
+	background-color: grey;
+}
+.content {
+	text-align: center;
+}
+#canvasDiv {
+	margin: auto;
+	display: block;
+	width: 500px;
+}
+#canvas {
+	background-color: white;
+}
+
+#level {
+	background: none;
+	cursor: pointer;
+	width: 500px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+	color: red;
+	border-color: red;
+	border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+	background: white;
+}
